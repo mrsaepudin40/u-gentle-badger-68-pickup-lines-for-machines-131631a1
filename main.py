@@ -13,6 +13,8 @@ import os
 LINE = "You must be my watchdog timer — every time I start to drift, you reset me back to you."
 
 def main():
+    # The gate allows 1-200 chars; fail loudly instead of shipping a bad line.
+    assert 1 <= len(LINE) <= 200
     os.makedirs("/output", exist_ok=True)
     with open("/output/entry.txt", "w", encoding="utf-8") as f:
         f.write(LINE)
